@@ -118,7 +118,7 @@ export function RegisterForm({}: Props) {
           </div>
 
           <Button type="submit" className="w-full" disabled={isPending}>
-            Login
+            Create Account
           </Button>
         </form>
       </Form>
