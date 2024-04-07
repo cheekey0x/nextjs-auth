@@ -15,6 +15,8 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { FormError } from "../form-error";
+import { FormSuccess } from "../form-success";
 
 type Props = {};
 
@@ -40,6 +42,8 @@ export function LoginForm({}: Props) {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormError message="" />
+          <FormSuccess message="" />
           <div className="space-y-4">
             <FormField
               control={form.control}
@@ -68,6 +72,7 @@ export function LoginForm({}: Props) {
               )}
             />
           </div>
+
           <Button type="submit" className="w-full">
             Login
           </Button>
