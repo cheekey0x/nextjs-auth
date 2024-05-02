@@ -5,12 +5,22 @@ import authConfig from "@/auth.config";
 import { getUserById } from "@/data/user";
 import { UserRole } from "@prisma/client";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
-} = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  pages: {
+    signIn: "/signin",
+    signOut: "/signout",
+    error: "/auth/error",
+    verifyRequest: "/auth/verify",
+    newUser: "/auth/new",
+  },
+  events: {
+    async linkAccount({ user }) {
+      await db.user.update({
+        where: { id: user.id },
+        data: { emailVerified: new Date() },
+      });
+    },
+  },
   callbacks: {
     async session({ token, session }) {
       if (token.sub && session.user) {

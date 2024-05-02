@@ -19,9 +19,17 @@ import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { login } from "@/actions/login";
 
+import { useSearchParams } from "next/navigation";
+
 type Props = {};
 
 export function LoginForm({}: Props) {
+  const searchParams = useSearchParams();
+  const urlError =
+    searchParams.get("error") === "OAuthAccountNotLinked"
+      ? "This account is not linked to any user. Please login with your email and password."
+      : "";
+
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -38,11 +46,11 @@ export function LoginForm({}: Props) {
     setSuccess("");
     startTransition(() => {
       login(values).then((response) => {
-        if (response.success) {
-          setSuccess(response.message);
+        if (response?.success) {
+          setSuccess(response?.message);
           setError("");
         } else {
-          setError(response.message);
+          setError(response?.message);
           setSuccess("");
         }
       });
@@ -58,7 +66,7 @@ export function LoginForm({}: Props) {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormError message={error} />
+          <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <div className="space-y-4">
             <FormField
