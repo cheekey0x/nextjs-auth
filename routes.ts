@@ -12,7 +12,13 @@ export const publicRoutes = ["/", "/auth/new-verification"];
  * @type {string[]}
  */
 
-export const authRoutes = ["/login", "/register", "/auth/error"];
+export const authRoutes = [
+  "/login",
+  "/register",
+  "/auth/error",
+  "/auth/reset-password",
+  "/auth/new-password",
+];
 
 /**
  * The prefix for the API routes
