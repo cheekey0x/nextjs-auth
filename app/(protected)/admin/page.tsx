@@ -6,12 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useCurrentRole } from "@/hooks/use-current-role";
 import { UserRole } from "@prisma/client";
-import React from "react";
 import { toast } from "sonner";
 
-type Props = {};
-
-export default function AdminPage({}: Props) {
+export default function AdminPage() {
   const onServerActionClick = async () => {
     admin()
       .then((res) => {

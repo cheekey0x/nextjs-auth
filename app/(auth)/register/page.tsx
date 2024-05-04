@@ -1,8 +1,5 @@
 import { RegisterForm } from "@/components/auth/register-form";
-import React from "react";
 
-type Props = {};
-
-export default function RegisterPage({}: Props) {
+export default function RegisterPage() {
   return <RegisterForm />;
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,9 +20,7 @@ import { FormSuccess } from "../form-success";
 import { login } from "@/actions/login";
 import { register } from "@/actions/register";
 
-type Props = {};
-
-export function RegisterForm({}: Props) {
+export function RegisterForm() {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();

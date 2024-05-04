@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,6 +26,7 @@ type Props = {};
 
 export function LoginForm({}: Props) {
   const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "";
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "This account is not linked to any user. Please login with your email and password."
@@ -47,7 +48,7 @@ export function LoginForm({}: Props) {
     setError("");
     setSuccess("");
     startTransition(() => {
-      login(values)
+      login(values, callbackUrl)
         .then((response) => {
           console.log(response?.success);
           if (response?.success === false) {

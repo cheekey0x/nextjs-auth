@@ -1,13 +1,11 @@
 "use client";
-import React from "react";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserButton } from "@/components/auth/user-button";
 
-type Props = {};
-
-export default function Navbar({}: Props) {
+export default function Navbar() {
   const pathname = usePathname();
 
   return (

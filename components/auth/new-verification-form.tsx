@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { CardWrapper } from "./card-wrapper";
 import { SyncLoader } from "react-spinners";
 import { useSearchParams } from "next/navigation";
@@ -7,9 +7,7 @@ import { newVerification } from "@/actions/new-verification";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 
-type Props = {};
-
-export default function NewVerificationForm({}: Props) {
+export default function NewVerificationForm() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
   const [error, setError] = useState<string | undefined>();

@@ -1,10 +1,7 @@
-import React from "react";
 import { CardWrapper } from "./card-wrapper";
 import { BsExclamationTriangle } from "react-icons/bs";
 
-type Props = {};
-
-export default function ErrorCard({}: Props) {
+export default function ErrorCard() {
   return (
     <CardWrapper
       headerLabel="Oops! Something went wrong"

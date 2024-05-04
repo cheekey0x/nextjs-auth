@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,9 +20,7 @@ import { FormSuccess } from "../form-success";
 import { newPassword } from "@/actions/new-password";
 import { useSearchParams } from "next/navigation";
 
-type Props = {};
-
-export function NewPasswordForm({}: Props) {
+export function NewPasswordForm() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
