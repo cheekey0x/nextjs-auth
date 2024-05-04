@@ -12,7 +12,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signOut: "/signout",
     error: "/auth/error",
     verifyRequest: "/auth/verify",
-    newUser: "/auth/new",
+    newUser: "/settings",
   },
   events: {
     async linkAccount({ user }) {
