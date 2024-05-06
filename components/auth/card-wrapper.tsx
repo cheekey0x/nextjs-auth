@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { BackButton } from "./back-button";
 import { Header } from "./header";
@@ -28,7 +29,9 @@ export const CardWrapper = ({
       <CardContent>{children}</CardContent>
       {showSocial && (
         <CardFooter>
-          <Social />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Social />
+          </Suspense>
         </CardFooter>
       )}
       <CardFooter>
